@@ -1,0 +1,233 @@
+"use client";
+import { useState, FormEvent } from "react";
+
+export default function Contact() {
+  const [formData, setFormData] = useState({
+    firstName: "",
+    lastName: "",
+    email: "",
+    company: "",
+    phone: "",
+    role: "",
+    message: "",
+  });
+  const [submitted, setSubmitted] = useState(false);
+
+  const handleSubmit = (e: FormEvent) => {
+    e.preventDefault();
+    // In production, this would send to a CRM or email service
+    console.log("Form submitted:", formData);
+    setSubmitted(true);
+  };
+
+  return (
+    <section id="contact" className="py-24 bg-white">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+        <div className="grid lg:grid-cols-2 gap-16">
+          {/* Left Content */}
+          <div>
+            <p className="text-primary-600 font-semibold text-sm uppercase tracking-wider mb-3">
+              Get Started
+            </p>
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-dark-900 mb-6 leading-tight">
+              Ready to Transform{" "}
+              <span className="gradient-text">Your Operations?</span>
+            </h2>
+            <p className="text-lg text-gray-500 leading-relaxed mb-8">
+              Schedule a personalized demo to see how Urvika.ai can automate
+              your healthcare communications, reduce costs, and improve patient
+              outcomes.
+            </p>
+
+            <div className="space-y-6">
+              <div className="flex items-start gap-4">
+                <div className="w-10 h-10 rounded-lg bg-primary-50 flex items-center justify-center flex-shrink-0">
+                  <svg className="w-5 h-5 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                </div>
+                <div>
+                  <h4 className="font-semibold text-dark-900 mb-1">Personalized Demo</h4>
+                  <p className="text-sm text-gray-500">See the platform in action with your specific use cases and workflows.</p>
+                </div>
+              </div>
+              <div className="flex items-start gap-4">
+                <div className="w-10 h-10 rounded-lg bg-primary-50 flex items-center justify-center flex-shrink-0">
+                  <svg className="w-5 h-5 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                </div>
+                <div>
+                  <h4 className="font-semibold text-dark-900 mb-1">ROI Assessment</h4>
+                  <p className="text-sm text-gray-500">Get a custom analysis of potential savings and efficiency gains.</p>
+                </div>
+              </div>
+              <div className="flex items-start gap-4">
+                <div className="w-10 h-10 rounded-lg bg-primary-50 flex items-center justify-center flex-shrink-0">
+                  <svg className="w-5 h-5 text-primary-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12.75L11.25 15 15 9.75M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                </div>
+                <div>
+                  <h4 className="font-semibold text-dark-900 mb-1">Implementation Plan</h4>
+                  <p className="text-sm text-gray-500">Receive a tailored deployment roadmap for your organization.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          {/* Right Form */}
+          <div>
+            {submitted ? (
+              <div className="bg-gray-50 rounded-2xl p-12 text-center border border-gray-100">
+                <div className="w-16 h-16 rounded-full bg-green-100 flex items-center justify-center mx-auto mb-6">
+                  <svg className="w-8 h-8 text-green-600" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M5 13l4 4L19 7" />
+                  </svg>
+                </div>
+                <h3 className="text-2xl font-bold text-dark-900 mb-3">
+                  Thank You!
+                </h3>
+                <p className="text-gray-500">
+                  We&apos;ve received your request. Our team will reach out within 24
+                  hours to schedule your personalized demo.
+                </p>
+              </div>
+            ) : (
+              <form
+                onSubmit={handleSubmit}
+                className="bg-gray-50 rounded-2xl p-8 sm:p-10 border border-gray-100"
+              >
+                <h3 className="text-xl font-bold text-dark-900 mb-6">
+                  Request a Demo
+                </h3>
+                <div className="grid sm:grid-cols-2 gap-4 mb-4">
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-1.5">
+                      First Name *
+                    </label>
+                    <input
+                      type="text"
+                      required
+                      value={formData.firstName}
+                      onChange={(e) =>
+                        setFormData({ ...formData, firstName: e.target.value })
+                      }
+                      className="w-full px-4 py-3 rounded-xl border border-gray-200 bg-white text-dark-900 text-sm focus:ring-2 focus:ring-primary-500 focus:border-transparent outline-none transition-all"
+                      placeholder="John"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-1.5">
+                      Last Name *
+                    </label>
+                    <input
+                      type="text"
+                      required
+                      value={formData.lastName}
+                      onChange={(e) =>
+                        setFormData({ ...formData, lastName: e.target.value })
+                      }
+                      className="w-full px-4 py-3 rounded-xl border border-gray-200 bg-white text-dark-900 text-sm focus:ring-2 focus:ring-primary-500 focus:border-transparent outline-none transition-all"
+                      placeholder="Doe"
+                    />
+                  </div>
+                </div>
+                <div className="mb-4">
+                  <label className="block text-sm font-medium text-gray-700 mb-1.5">
+                    Work Email *
+                  </label>
+                  <input
+                    type="email"
+                    required
+                    value={formData.email}
+                    onChange={(e) =>
+                      setFormData({ ...formData, email: e.target.value })
+                    }
+                    className="w-full px-4 py-3 rounded-xl border border-gray-200 bg-white text-dark-900 text-sm focus:ring-2 focus:ring-primary-500 focus:border-transparent outline-none transition-all"
+                    placeholder="john@company.com"
+                  />
+                </div>
+                <div className="grid sm:grid-cols-2 gap-4 mb-4">
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-1.5">
+                      Company *
+                    </label>
+                    <input
+                      type="text"
+                      required
+                      value={formData.company}
+                      onChange={(e) =>
+                        setFormData({ ...formData, company: e.target.value })
+                      }
+                      className="w-full px-4 py-3 rounded-xl border border-gray-200 bg-white text-dark-900 text-sm focus:ring-2 focus:ring-primary-500 focus:border-transparent outline-none transition-all"
+                      placeholder="Your Organization"
+                    />
+                  </div>
+                  <div>
+                    <label className="block text-sm font-medium text-gray-700 mb-1.5">
+                      Phone
+                    </label>
+                    <input
+                      type="tel"
+                      value={formData.phone}
+                      onChange={(e) =>
+                        setFormData({ ...formData, phone: e.target.value })
+                      }
+                      className="w-full px-4 py-3 rounded-xl border border-gray-200 bg-white text-dark-900 text-sm focus:ring-2 focus:ring-primary-500 focus:border-transparent outline-none transition-all"
+                      placeholder="(555) 123-4567"
+                    />
+                  </div>
+                </div>
+                <div className="mb-4">
+                  <label className="block text-sm font-medium text-gray-700 mb-1.5">
+                    Your Role
+                  </label>
+                  <select
+                    value={formData.role}
+                    onChange={(e) =>
+                      setFormData({ ...formData, role: e.target.value })
+                    }
+                    className="w-full px-4 py-3 rounded-xl border border-gray-200 bg-white text-dark-900 text-sm focus:ring-2 focus:ring-primary-500 focus:border-transparent outline-none transition-all"
+                  >
+                    <option value="">Select your role</option>
+                    <option value="executive">C-Suite / Executive</option>
+                    <option value="director">Director / VP</option>
+                    <option value="manager">Manager</option>
+                    <option value="operations">Operations</option>
+                    <option value="it">IT / Engineering</option>
+                    <option value="clinical">Clinical</option>
+                    <option value="other">Other</option>
+                  </select>
+                </div>
+                <div className="mb-6">
+                  <label className="block text-sm font-medium text-gray-700 mb-1.5">
+                    How can we help?
+                  </label>
+                  <textarea
+                    rows={3}
+                    value={formData.message}
+                    onChange={(e) =>
+                      setFormData({ ...formData, message: e.target.value })
+                    }
+                    className="w-full px-4 py-3 rounded-xl border border-gray-200 bg-white text-dark-900 text-sm focus:ring-2 focus:ring-primary-500 focus:border-transparent outline-none transition-all resize-none"
+                    placeholder="Tell us about your needs..."
+                  />
+                </div>
+                <button
+                  type="submit"
+                  className="w-full px-6 py-4 rounded-xl bg-primary-600 hover:bg-primary-500 text-white font-semibold text-base transition-all duration-200 shadow-lg shadow-primary-600/25 hover:shadow-primary-500/30"
+                >
+                  Request Demo
+                </button>
+                <p className="text-xs text-gray-400 mt-4 text-center">
+                  By submitting, you agree to our Privacy Policy and Terms of Service.
+                </p>
+              </form>
+            )}
+          </div>
+        </div>
+      </div>
+    </section>
+  );
+}
