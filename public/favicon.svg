@@ -1,0 +1,19 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 32 32" width="32" height="32">
+  <rect width="32" height="32" rx="6" fill="#E8611A"/>
+  <g transform="translate(16, 18) scale(0.1)">
+    <!-- Feather plumes -->
+    <path d="M0,10 Q-70,-60 -120,-160 Q-115,-145 -105,-140 Q-55,-50 0,10Z" fill="white"/>
+    <path d="M0,5 Q-55,-75 -90,-175 Q-83,-160 -73,-152 Q-35,-60 0,5Z" fill="white"/>
+    <path d="M0,0 Q-38,-85 -58,-190 Q-50,-175 -42,-168 Q-18,-70 0,0Z" fill="white"/>
+    <path d="M0,-2 Q-18,-95 -25,-200 Q-18,-185 -12,-178 Q0,-78 0,-2Z" fill="white"/>
+    <path d="M0,-5 Q5,-100 8,-205 Q0,-190 -8,-205 Q-5,-100 0,-5Z" fill="white"/>
+    <path d="M0,-2 Q18,-95 25,-200 Q18,-185 12,-178 Q0,-78 0,-2Z" fill="white"/>
+    <path d="M0,0 Q38,-85 58,-190 Q50,-175 42,-168 Q18,-70 0,0Z" fill="white"/>
+    <path d="M0,5 Q55,-75 90,-175 Q83,-160 73,-152 Q35,-60 0,5Z" fill="white"/>
+    <path d="M0,10 Q70,-60 120,-160 Q115,-145 105,-140 Q55,-50 0,10Z" fill="white"/>
+    <!-- Body -->
+    <path d="M0,-20 Q-20,10 -18,50 Q-14,75 0,85 Q14,75 18,50 Q20,10 0,-20Z" fill="white"/>
+    <path d="M-7,-18 Q-5,-45 0,-60 Q5,-45 7,-18Z" fill="white"/>
+    <circle cx="0" cy="-65" r="14" fill="white"/>
+  </g>
+</svg>
