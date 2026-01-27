@@ -1,11 +1,13 @@
 import Navbar from "@/components/Navbar";
 import Hero from "@/components/Hero";
 import LogoBar from "@/components/LogoBar";
-import Platform from "@/components/Platform";
+import WhyUrvika from "@/components/WhyUrvika";
+import Product from "@/components/Product";
 import Solutions from "@/components/Solutions";
 import About from "@/components/About";
 import Testimonials from "@/components/Testimonials";
 import Contact from "@/components/Contact";
+import Careers from "@/components/Careers";
 import Footer from "@/components/Footer";
 
 export default function Home() {
@@ -14,11 +16,13 @@ export default function Home() {
       <Navbar />
       <Hero />
       <LogoBar />
-      <Platform />
+      <WhyUrvika />
+      <Product />
       <Solutions />
-      <About />
       <Testimonials />
+      <About />
       <Contact />
+      <Careers />
       <Footer />
     </main>
   );
