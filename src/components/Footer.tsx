@@ -15,11 +15,7 @@ export default function Footer() {
           {/* Brand Column */}
           <div className="col-span-2">
             <div className="flex items-center gap-2.5 mb-5">
-              <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-[#0B94F5] to-[#06b6d4] flex items-center justify-center">
-                <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
-                </svg>
-              </div>
+              <img src="/logo-icon.svg" alt="Urvika.ai" className="w-8 h-8 brightness-0 invert" />
               <span className="text-white font-bold text-xl tracking-tight">
                 Urvika<span className="text-[#0B94F5]">.ai</span>
               </span>

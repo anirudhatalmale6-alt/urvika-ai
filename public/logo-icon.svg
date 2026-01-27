@@ -1,0 +1,50 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 280 300" width="280" height="300">
+  <g transform="translate(140, 175)">
+    <!-- Feather plumes - solid petal/teardrop shapes -->
+    <path d="M0,10 Q-70,-60 -120,-160 Q-115,-145 -105,-140 Q-55,-50 0,10Z" fill="#E8611A"/>
+    <ellipse cx="-112" cy="-148" rx="6" ry="9" fill="white" transform="rotate(-40,-112,-148)"/>
+
+    <path d="M0,5 Q-55,-75 -90,-175 Q-83,-160 -73,-152 Q-35,-60 0,5Z" fill="#E8611A"/>
+    <ellipse cx="-83" cy="-163" rx="6" ry="9" fill="white" transform="rotate(-28,-83,-163)"/>
+
+    <path d="M0,0 Q-38,-85 -58,-190 Q-50,-175 -42,-168 Q-18,-70 0,0Z" fill="#E8611A"/>
+    <ellipse cx="-52" cy="-178" rx="6" ry="9" fill="white" transform="rotate(-16,-52,-178)"/>
+
+    <path d="M0,-2 Q-18,-95 -25,-200 Q-18,-185 -12,-178 Q0,-78 0,-2Z" fill="#E8611A"/>
+    <ellipse cx="-20" cy="-188" rx="6" ry="9" fill="white" transform="rotate(-6,-20,-188)"/>
+
+    <path d="M0,-5 Q5,-100 8,-205 Q0,-190 -8,-205 Q-5,-100 0,-5Z" fill="#E8611A"/>
+    <ellipse cx="0" cy="-195" rx="6" ry="9" fill="white"/>
+
+    <path d="M0,-2 Q18,-95 25,-200 Q18,-185 12,-178 Q0,-78 0,-2Z" fill="#E8611A"/>
+    <ellipse cx="20" cy="-188" rx="6" ry="9" fill="white" transform="rotate(6,20,-188)"/>
+
+    <path d="M0,0 Q38,-85 58,-190 Q50,-175 42,-168 Q18,-70 0,0Z" fill="#E8611A"/>
+    <ellipse cx="52" cy="-178" rx="6" ry="9" fill="white" transform="rotate(16,52,-178)"/>
+
+    <path d="M0,5 Q55,-75 90,-175 Q83,-160 73,-152 Q35,-60 0,5Z" fill="#E8611A"/>
+    <ellipse cx="83" cy="-163" rx="6" ry="9" fill="white" transform="rotate(28,83,-163)"/>
+
+    <path d="M0,10 Q70,-60 120,-160 Q115,-145 105,-140 Q55,-50 0,10Z" fill="#E8611A"/>
+    <ellipse cx="112" cy="-148" rx="6" ry="9" fill="white" transform="rotate(40,112,-148)"/>
+
+    <!-- Body -->
+    <path d="M0,-20 Q-20,10 -18,50 Q-14,75 0,85 Q14,75 18,50 Q20,10 0,-20Z" fill="#E8611A"/>
+    <!-- Neck -->
+    <path d="M-7,-18 Q-5,-45 0,-60 Q5,-45 7,-18Z" fill="#E8611A"/>
+    <!-- Head -->
+    <circle cx="0" cy="-65" r="14" fill="#E8611A"/>
+    <!-- Beak -->
+    <path d="M13,-67 L24,-72 L14,-62Z" fill="#E8611A"/>
+    <!-- Crown -->
+    <path d="M-4,-78 Q-6,-92 -5,-98" stroke="#E8611A" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+    <circle cx="-5" cy="-101" r="3.5" fill="#E8611A"/>
+    <path d="M0,-79 Q0,-94 0,-100" stroke="#E8611A" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+    <circle cx="0" cy="-103" r="3.5" fill="#E8611A"/>
+    <path d="M4,-78 Q6,-92 5,-98" stroke="#E8611A" stroke-width="2.5" fill="none" stroke-linecap="round"/>
+    <circle cx="5" cy="-101" r="3.5" fill="#E8611A"/>
+    <!-- Eye -->
+    <circle cx="-3" cy="-66" r="3.5" fill="white"/>
+    <circle cx="-2.5" cy="-66.5" r="1.2" fill="#E8611A"/>
+  </g>
+</svg>

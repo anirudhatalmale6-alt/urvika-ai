@@ -52,11 +52,7 @@ export default function Navbar() {
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between">
         {/* Logo */}
         <Link href="/" className="flex items-center gap-2.5">
-          <div className="w-8 h-8 rounded-lg bg-gradient-to-br from-[#0B94F5] to-[#06b6d4] flex items-center justify-center">
-            <svg className="w-5 h-5 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M13 10V3L4 14h7v7l9-11h-7z" />
-            </svg>
-          </div>
+          <img src="/logo-icon.svg" alt="Urvika.ai" className="w-8 h-8" />
           <span className="font-bold text-xl tracking-tight text-gray-900">
             Urvika<span className="text-[#0B94F5]">.ai</span>
           </span>
