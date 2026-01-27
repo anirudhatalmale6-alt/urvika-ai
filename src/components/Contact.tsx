@@ -20,14 +20,24 @@ export default function Contact() {
     setLoading(true);
     setError("");
     try {
-      const res = await fetch("/api/contact", {
+      const res = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(formData),
+        body: JSON.stringify({
+          access_key: process.env.NEXT_PUBLIC_WEB3FORMS_KEY || "",
+          subject: `New Demo Request from ${formData.firstName} ${formData.lastName} — ${formData.company}`,
+          from_name: `${formData.firstName} ${formData.lastName}`,
+          name: `${formData.firstName} ${formData.lastName}`,
+          email: formData.email,
+          company: formData.company,
+          phone: formData.phone || "Not provided",
+          role: formData.role || "Not specified",
+          message: formData.message || "No message provided",
+        }),
       });
-      if (!res.ok) {
-        const data = await res.json();
-        throw new Error(data.error || "Something went wrong");
+      const data = await res.json();
+      if (!data.success) {
+        throw new Error(data.message || "Something went wrong");
       }
       setSubmitted(true);
     } catch (err: unknown) {
