@@ -1,8 +1,10 @@
 "use client";
+import Link from "next/link";
 
 const audiences = [
   {
     title: "Patients",
+    href: "/solutions/patients",
     description:
       "Automated outreach, appointment scheduling, medication reminders, and follow-up calls that keep patients engaged and informed throughout their care journey.",
     icon: (
@@ -21,6 +23,7 @@ const audiences = [
   },
   {
     title: "Payors",
+    href: "/solutions/payors",
     description:
       "Streamline benefits verification, prior authorization, and claims status inquiries with AI agents that navigate complex payor phone trees and systems.",
     icon: (
@@ -39,6 +42,7 @@ const audiences = [
   },
   {
     title: "Providers",
+    href: "/solutions/providers",
     description:
       "Automate referral management, lab result communications, and inter-provider coordination to free up clinical staff and improve care coordination.",
     icon: (
@@ -58,12 +62,12 @@ const audiences = [
 ];
 
 const industries = [
-  { name: "Health Systems", icon: "🏥" },
-  { name: "Ambulatory Surgery Centers", icon: "🔬" },
-  { name: "Labs & Diagnostics", icon: "🧪" },
-  { name: "Specialty Pharmacies", icon: "💊" },
-  { name: "Pharmaceutical & Life Sciences", icon: "⚗️" },
-  { name: "Payor Partnerships", icon: "🤝" },
+  { name: "Health Systems", icon: "🏥", href: "/solutions/health-systems" },
+  { name: "Ambulatory Surgery Centers", icon: "🔬", href: "/solutions/ambulatory-surgery-centers" },
+  { name: "Labs & Diagnostics", icon: "🧪", href: "/solutions/labs-diagnostics" },
+  { name: "Specialty Pharmacies", icon: "💊", href: "/solutions/specialty-pharmacies" },
+  { name: "Pharmaceutical & Life Sciences", icon: "⚗️", href: "/solutions/pharmaceutical-life-sciences" },
+  { name: "Payor Partnerships", icon: "🤝", href: "/solutions/payor-partners" },
 ];
 
 export default function Solutions() {
@@ -88,9 +92,10 @@ export default function Solutions() {
         {/* Audience Cards */}
         <div className="grid md:grid-cols-3 gap-8 mb-20">
           {audiences.map((item, i) => (
-            <div
+            <Link
               key={i}
-              className="bg-white rounded-2xl overflow-hidden card-shadow hover:card-shadow-hover border border-gray-100 transition-all duration-300 hover:-translate-y-1 group"
+              href={item.href}
+              className="bg-white rounded-2xl overflow-hidden card-shadow hover:card-shadow-hover border border-gray-100 transition-all duration-300 hover:-translate-y-1 group block"
             >
               {/* Card Header */}
               <div className={`bg-gradient-to-r ${item.color} p-6`}>
@@ -114,17 +119,14 @@ export default function Solutions() {
                     </li>
                   ))}
                 </ul>
-                <a
-                  href="#contact"
-                  className="inline-flex items-center text-[#0B94F5] font-semibold text-sm mt-6 hover:text-[#0a85dc] transition-colors group"
-                >
+                <span className="inline-flex items-center text-[#0B94F5] font-semibold text-sm mt-6 group-hover:text-[#0a85dc] transition-colors">
                   Learn More
                   <svg className="w-4 h-4 ml-1 group-hover:translate-x-1 transition-transform" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                     <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M17 8l4 4m0 0l-4 4m4-4H3" />
                   </svg>
-                </a>
+                </span>
               </div>
-            </div>
+            </Link>
           ))}
         </div>
 
@@ -140,16 +142,16 @@ export default function Solutions() {
           </div>
           <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4">
             {industries.map((ind) => (
-              <a
+              <Link
                 key={ind.name}
-                href="#contact"
+                href={ind.href}
                 className="flex flex-col items-center gap-3 p-6 rounded-2xl bg-gray-50 hover:bg-white border border-gray-100 hover:border-[#0B94F5]/20 hover:shadow-lg transition-all duration-300 text-center group hover:-translate-y-1"
               >
                 <span className="text-2xl">{ind.icon}</span>
                 <span className="text-sm font-semibold text-gray-700 group-hover:text-[#0B94F5] transition-colors leading-tight">
                   {ind.name}
                 </span>
-              </a>
+              </Link>
             ))}
           </div>
         </div>
