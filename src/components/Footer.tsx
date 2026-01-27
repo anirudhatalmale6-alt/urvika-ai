@@ -53,10 +53,16 @@ export default function Footer() {
                 Urvika<span className="text-primary-400">.ai</span>
               </span>
             </div>
-            <p className="text-sm text-gray-500 leading-relaxed mb-6">
+            <p className="text-sm text-gray-500 leading-relaxed mb-4">
               AI agents for clinical &amp; administrative healthcare calls. Saving
               the healthcare system hundreds of thousands of hours annually.
             </p>
+            <a
+              href="mailto:hr@alphanio.com"
+              className="text-sm text-gray-500 hover:text-primary-400 transition-colors duration-200 block mb-6"
+            >
+              hr@alphanio.com
+            </a>
             {/* Social Links */}
             <div className="flex gap-3">
               <a

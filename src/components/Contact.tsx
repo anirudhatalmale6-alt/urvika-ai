@@ -12,12 +12,30 @@ export default function Contact() {
     message: "",
   });
   const [submitted, setSubmitted] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [error, setError] = useState("");
 
-  const handleSubmit = (e: FormEvent) => {
+  const handleSubmit = async (e: FormEvent) => {
     e.preventDefault();
-    // In production, this would send to a CRM or email service
-    console.log("Form submitted:", formData);
-    setSubmitted(true);
+    setLoading(true);
+    setError("");
+    try {
+      const res = await fetch("/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
+      if (!res.ok) {
+        const data = await res.json();
+        throw new Error(data.error || "Something went wrong");
+      }
+      setSubmitted(true);
+    } catch (err: unknown) {
+      const message = err instanceof Error ? err.message : "Failed to send. Please try again.";
+      setError(message);
+    } finally {
+      setLoading(false);
+    }
   };
 
   return (
@@ -214,11 +232,17 @@ export default function Contact() {
                     placeholder="Tell us about your needs..."
                   />
                 </div>
+                {error && (
+                  <div className="mb-4 p-3 rounded-lg bg-red-50 border border-red-200 text-red-600 text-sm">
+                    {error}
+                  </div>
+                )}
                 <button
                   type="submit"
-                  className="w-full px-6 py-4 rounded-xl bg-primary-600 hover:bg-primary-500 text-white font-semibold text-base transition-all duration-200 shadow-lg shadow-primary-600/25 hover:shadow-primary-500/30"
+                  disabled={loading}
+                  className="w-full px-6 py-4 rounded-xl bg-primary-600 hover:bg-primary-500 disabled:bg-primary-400 disabled:cursor-not-allowed text-white font-semibold text-base transition-all duration-200 shadow-lg shadow-primary-600/25 hover:shadow-primary-500/30"
                 >
-                  Request Demo
+                  {loading ? "Sending..." : "Request Demo"}
                 </button>
                 <p className="text-xs text-gray-400 mt-4 text-center">
                   By submitting, you agree to our Privacy Policy and Terms of Service.
