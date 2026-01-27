@@ -7,16 +7,6 @@ export default function Hero() {
 
   return (
     <section className="relative overflow-hidden">
-      {/* Announcement Banner */}
-      <div className="bg-gradient-to-r from-[#0B94F5] to-[#06b6d4] text-white text-center py-2.5 px-4">
-        <p className="text-sm font-medium">
-          Urvika.ai is now SOC 2 Type II Certified —{" "}
-          <a href="#about" className="underline underline-offset-2 hover:text-blue-100">
-            Learn More
-          </a>
-        </p>
-      </div>
-
       {/* Hero Section with cyan/blue gradient like infinitus */}
       <div className="gradient-hero relative pt-24 pb-20 sm:pt-32 sm:pb-28">
         {/* Subtle grid pattern */}
