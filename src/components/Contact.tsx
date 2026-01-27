@@ -92,6 +92,27 @@ export default function Contact() {
                 </div>
               </div>
             </div>
+
+            {/* Office Address */}
+            <div className="mt-8 p-5 rounded-xl bg-gray-50 border border-gray-100">
+              <div className="flex items-start gap-3">
+                <svg className="w-5 h-5 text-primary-600 flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15 10.5a3 3 0 11-6 0 3 3 0 016 0z" />
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M19.5 10.5c0 7.142-7.5 11.25-7.5 11.25S4.5 17.642 4.5 10.5a7.5 7.5 0 1115 0z" />
+                </svg>
+                <div>
+                  <h4 className="font-semibold text-dark-900 text-sm mb-1">Our Office</h4>
+                  <p className="text-sm text-gray-500 leading-relaxed">
+                    Alphanio Nexgen, No.39, 2nd Floor, Suite 1263,<br />
+                    NGEF Ln, Stage 1, Indiranagar,<br />
+                    Bengaluru, Karnataka 560038
+                  </p>
+                  <a href="mailto:hr@alphanio.com" className="text-sm text-primary-600 hover:text-primary-500 mt-2 inline-block font-medium">
+                    hr@alphanio.com
+                  </a>
+                </div>
+              </div>
+            </div>
           </div>
 
           {/* Right Form */}

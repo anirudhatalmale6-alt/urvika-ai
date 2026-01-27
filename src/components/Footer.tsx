@@ -59,10 +59,13 @@ export default function Footer() {
             </p>
             <a
               href="mailto:hr@alphanio.com"
-              className="text-sm text-gray-500 hover:text-primary-400 transition-colors duration-200 block mb-6"
+              className="text-sm text-gray-500 hover:text-primary-400 transition-colors duration-200 block mb-4"
             >
               hr@alphanio.com
             </a>
+            <p className="text-sm text-gray-500 leading-relaxed mb-6">
+              Alphanio Nexgen, No.39, 2nd Floor, Suite 1263, NGEF Ln, Stage 1, Indiranagar, Bengaluru, Karnataka 560038
+            </p>
             {/* Social Links */}
             <div className="flex gap-3">
               <a
