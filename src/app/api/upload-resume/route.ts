@@ -9,27 +9,30 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: "No file provided" }, { status: 400 });
     }
 
-    // Upload to tmpfiles.org (free file hosting - files available for 1 hour)
+    // Upload to Litterbox (catbox.moe) - free file hosting with 24h retention
     const uploadFormData = new FormData();
-    uploadFormData.append("file", file);
+    uploadFormData.append("reqtype", "fileupload");
+    uploadFormData.append("time", "24h");
+    uploadFormData.append("fileToUpload", file);
 
-    const uploadRes = await fetch("https://tmpfiles.org/api/v1/upload", {
+    const uploadRes = await fetch("https://litterbox.catbox.moe/resources/internals/api.php", {
       method: "POST",
       body: uploadFormData,
     });
 
-    const uploadData = await uploadRes.json();
-
-    if (uploadData.status !== "success") {
+    if (!uploadRes.ok) {
       throw new Error("Upload failed");
     }
 
-    // Convert URL from http://tmpfiles.org/ID/file to http://tmpfiles.org/dl/ID/file for direct download
-    const url = uploadData.data.url.replace("tmpfiles.org/", "tmpfiles.org/dl/");
+    const url = await uploadRes.text();
+
+    if (!url.startsWith("https://")) {
+      throw new Error("Upload failed: " + url);
+    }
 
     return NextResponse.json({
       success: true,
-      url: url,
+      url: url.trim(),
       filename: file.name,
     });
   } catch (error) {
