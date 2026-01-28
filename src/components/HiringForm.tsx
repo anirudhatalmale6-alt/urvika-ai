@@ -27,19 +27,35 @@ export default function HiringForm({ jobTitle, onClose }: HiringFormProps) {
     setError("");
 
     try {
-      // Use FormData for proper file attachment support
-      const formDataToSend = new FormData();
-      formDataToSend.append("access_key", "717cb147-0628-4fa2-96cc-2228296bc2a3");
-      formDataToSend.append("subject", `Job Application${jobTitle ? ` for ${jobTitle}` : ""} — ${formData.name}`);
-      formDataToSend.append("from_name", formData.name);
-      formDataToSend.append("name", formData.name);
-      formDataToSend.append("mobile", formData.mobile);
-      formDataToSend.append("position", jobTitle || "General Application");
-      formDataToSend.append("attachment", resume);
+      // First, upload the resume to get a download link
+      const uploadFormData = new FormData();
+      uploadFormData.append("file", resume);
 
+      const uploadRes = await fetch("/api/upload-resume", {
+        method: "POST",
+        body: uploadFormData,
+      });
+
+      const uploadData = await uploadRes.json();
+
+      if (!uploadData.success) {
+        throw new Error("Failed to upload resume");
+      }
+
+      // Now send the form with the resume download link
       const res = await fetch("https://api.web3forms.com/submit", {
         method: "POST",
-        body: formDataToSend,
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({
+          access_key: "717cb147-0628-4fa2-96cc-2228296bc2a3",
+          subject: `Job Application${jobTitle ? ` for ${jobTitle}` : ""} — ${formData.name}`,
+          from_name: formData.name,
+          name: formData.name,
+          mobile: formData.mobile,
+          position: jobTitle || "General Application",
+          resume_filename: uploadData.filename,
+          resume_download_link: uploadData.url,
+        }),
       });
 
       const data = await res.json();
