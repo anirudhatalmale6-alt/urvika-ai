@@ -27,43 +27,30 @@ export default function HiringForm({ jobTitle, onClose }: HiringFormProps) {
     setError("");
 
     try {
-      // Convert file to base64 for Web3Forms
-      const reader = new FileReader();
-      reader.readAsDataURL(resume);
+      // Use FormData for proper file attachment support
+      const formDataToSend = new FormData();
+      formDataToSend.append("access_key", "717cb147-0628-4fa2-96cc-2228296bc2a3");
+      formDataToSend.append("subject", `Job Application${jobTitle ? ` for ${jobTitle}` : ""} — ${formData.name}`);
+      formDataToSend.append("from_name", formData.name);
+      formDataToSend.append("name", formData.name);
+      formDataToSend.append("mobile", formData.mobile);
+      formDataToSend.append("position", jobTitle || "General Application");
+      formDataToSend.append("attachment", resume);
 
-      reader.onload = async () => {
-        const base64Resume = reader.result as string;
+      const res = await fetch("https://api.web3forms.com/submit", {
+        method: "POST",
+        body: formDataToSend,
+      });
 
-        const res = await fetch("https://api.web3forms.com/submit", {
-          method: "POST",
-          headers: { "Content-Type": "application/json" },
-          body: JSON.stringify({
-            access_key: "717cb147-0628-4fa2-96cc-2228296bc2a3",
-            subject: `Job Application${jobTitle ? ` for ${jobTitle}` : ""} — ${formData.name}`,
-            from_name: formData.name,
-            name: formData.name,
-            mobile: formData.mobile,
-            position: jobTitle || "General Application",
-            resume_filename: resume.name,
-            resume_attachment: base64Resume,
-          }),
-        });
-
-        const data = await res.json();
-        if (!data.success) {
-          throw new Error(data.message || "Something went wrong");
-        }
-        setSubmitted(true);
-        setLoading(false);
-      };
-
-      reader.onerror = () => {
-        setError("Failed to read resume file. Please try again.");
-        setLoading(false);
-      };
+      const data = await res.json();
+      if (!data.success) {
+        throw new Error(data.message || "Something went wrong");
+      }
+      setSubmitted(true);
     } catch (err: unknown) {
       const message = err instanceof Error ? err.message : "Failed to send. Please try again.";
       setError(message);
+    } finally {
       setLoading(false);
     }
   };
