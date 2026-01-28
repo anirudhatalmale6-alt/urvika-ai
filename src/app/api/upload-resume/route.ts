@@ -9,24 +9,27 @@ export async function POST(request: NextRequest) {
       return NextResponse.json({ error: "No file provided" }, { status: 400 });
     }
 
-    // Upload to file.io (free, temporary file hosting - files expire after 1 download or 14 days)
+    // Upload to tmpfiles.org (free file hosting - files available for 1 hour)
     const uploadFormData = new FormData();
     uploadFormData.append("file", file);
 
-    const uploadRes = await fetch("https://file.io", {
+    const uploadRes = await fetch("https://tmpfiles.org/api/v1/upload", {
       method: "POST",
       body: uploadFormData,
     });
 
     const uploadData = await uploadRes.json();
 
-    if (!uploadData.success) {
+    if (uploadData.status !== "success") {
       throw new Error("Upload failed");
     }
 
+    // Convert URL from http://tmpfiles.org/ID/file to http://tmpfiles.org/dl/ID/file for direct download
+    const url = uploadData.data.url.replace("tmpfiles.org/", "tmpfiles.org/dl/");
+
     return NextResponse.json({
       success: true,
-      url: uploadData.link,
+      url: url,
       filename: file.name,
     });
   } catch (error) {
